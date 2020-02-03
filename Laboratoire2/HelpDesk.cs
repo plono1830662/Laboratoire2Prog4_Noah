@@ -70,9 +70,10 @@ namespace Laboratoire2
         }
         public void CreerTech(int nbTech)
         {
+            string[] nom = {"Joe", "Bob","Richard","Tanaso Gardis"};
             for (int i = 0; i < nbTech; i++)
             {
-                techs.Add(new Tech("Tech" + i));
+                techs.Add(new Tech(nom[rnd.Next(0,4)]));
                 Console.WriteLine(techs[i].Nom);
             }
                
