@@ -18,7 +18,6 @@ namespace Laboratoire2
         private int tempsServMoyen;
         private static IWebProxy _webproxy;
         private string fait;
-
         public HelpDesk(int _tempsTour,int _probaClient, int _tempsServMoyen)
         {
             techs = new List<Tech>();
@@ -41,9 +40,6 @@ namespace Laboratoire2
                 Thread t = new Thread(new ThreadStart(tech.Run));
                 t.Start();
             }
-
-
-
         }
         public void TrouverClient()
         {
@@ -65,34 +61,30 @@ namespace Laboratoire2
                 Console.WriteLine(fait);
                 Thread.Sleep(tempsTour);
                 Console.Clear();
-
+                
             }
         }
         public void CreerTech(int nbTech)
         {
-            string[] nom = {"Joe", "Bob","Richard","Tanaso Gardis"};
+            string[] nom = {"Joe", "Bob","Richard","Tanaso Gardis","Michel","Jean"};
             for (int i = 0; i < nbTech; i++)
             {
-                techs.Add(new Tech(nom[rnd.Next(0,4)]));
+                techs.Add(new Tech(nom[rnd.Next(0,nom.Length)]));
                 Console.WriteLine(techs[i].Nom);
             }
                
         }
         public async Task HttpGetAsync(string url, Encoding encoding = null)
-
         {
             int nbFait = rnd.Next(1,150);
             var wc = new System.Net.WebClient
 
             {
-
                 Proxy = _webproxy,
 
                 Encoding = encoding ?? Encoding.UTF8
-
             };
             fait= await wc.DownloadStringTaskAsync(url+"/"+nbFait);
-
         }
     }
 }
